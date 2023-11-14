@@ -1,0 +1,17 @@
+﻿<Window x:Class="DeleteMetaFile.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeleteMetaFile"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Canvas HorizontalAlignment="Left" Height="284" Margin="152,122,0,0" VerticalAlignment="Top" Width="582">
+            <Button Content="Button" Height="42" Width="192" HorizontalAlignment="Left" Canvas.Left="390" Canvas.Top="242" VerticalAlignment="Top"/>
+            <TextBox TextWrapping="Wrap" Text="TextBox" Width="345" Height="32" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </Canvas>
+        <Button Content="Button" HorizontalAlignment="Left" Height="32" Margin="497,122,0,0" VerticalAlignment="Top" Width="45"/>
+
+    </Grid>
+</Window>
