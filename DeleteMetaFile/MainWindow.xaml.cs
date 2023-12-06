@@ -15,27 +15,19 @@ namespace DeleteMetaFile
             InitializeComponent();
         }
 
-        private void DeleteButtonClick(object sender, RoutedEventArgs e)
+        private void OpenFolderButtonClick(object sender, RoutedEventArgs e)
         {
-            string sourceFolderPass = PathTextBox.Text;
-            // 実行したいコマンド
-            string powerShellCommand = $"cd {sourceFolderPass} ; Get-ChildItem *.meta -Recurse | Remove-Item";
+            using (var cofd = new CommonOpenFileDialog()
+            {
+                Title = "フォルダを選択してください",
+                IsFolderPicker = true
+            })
+            {
+                if (cofd.ShowDialog() != CommonFileDialogResult.Ok) return;
 
-            OpenAndStart(powerShellCommand);
-        }
-
-        /// <summary>
-        /// PowerShellの実行
-        /// </summary>
-        /// <param name="command">PowerShellコマンド</param>
-        private void OpenAndStart(string command)
-        {
-            Process cmd = new();
-            cmd.StartInfo.FileName = "PowerShell.exe";
-            //PowerShellのウィンドウを出さずに実行。
-            cmd.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            cmd.StartInfo.Arguments = command;
-            cmd.Start();
+                // 選択されたフォルダ名を保持
+                PathTextBox.Text = cofd.FileName;
+            }
         }
 
         private void FolderDrop(object sender, DragEventArgs e)
@@ -64,19 +56,27 @@ namespace DeleteMetaFile
             || Directory.Exists(((string[])data.GetData(DataFormats.FileDrop))[0]);
         }
 
-        private void OpenFolderButtonClick(object sender, RoutedEventArgs e)
+        private void DeleteButtonClick(object sender, RoutedEventArgs e)
         {
-            using (var cofd = new CommonOpenFileDialog()
-            {
-                Title = "フォルダを選択してください",
-                IsFolderPicker = true
-            })
-            {
-                if (cofd.ShowDialog() != CommonFileDialogResult.Ok) return;
+            string sourceFolderPass = PathTextBox.Text;
+            // 実行したいコマンド
+            string powerShellCommand = $"cd {sourceFolderPass} ; Get-ChildItem *.meta -Recurse | Remove-Item";
 
-                // 選択されたフォルダ名を保持
-                PathTextBox.Text = cofd.FileName;
-            }
+            OpenAndStart(powerShellCommand);
+        }
+
+        /// <summary>
+        /// PowerShellの実行
+        /// </summary>
+        /// <param name="command">PowerShellコマンド</param>
+        private void OpenAndStart(string command)
+        {
+            Process cmd = new();
+            cmd.StartInfo.FileName = "PowerShell.exe";
+            //PowerShellのウィンドウを出さずに実行。
+            cmd.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            cmd.StartInfo.Arguments = command;
+            cmd.Start();
         }
     }
 }
