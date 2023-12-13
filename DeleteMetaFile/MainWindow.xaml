@@ -21,7 +21,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="DeleteButton" Content=".metaを消す魔法" Height="42" Width="192" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,73,0,0" Grid.Column="1" Click="DeleteButtonClick" FontSize="22" FontWeight="Bold" Background="#FFEAEAEA"/>
-        <TextBox x:Name="PathTextBox" TextWrapping="Wrap" Width="340" Height="32" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="10,16,0,0" FontSize="14"/>
+        <TextBox x:Name="PathTextBox" TextWrapping="Wrap" Width="340" Height="32" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="10,16,0,0" FontSize="14" TextChanged="PathTextChanged"/>
         <Button x:Name="OpenFolderButton" Content="･･･" Height="32" Width="45" HorizontalAlignment="Left" VerticalAlignment="Top" Click="OpenFolderButtonClick" Grid.ColumnSpan="2" Margin="350,16,0,0"/>
 
     </Grid>

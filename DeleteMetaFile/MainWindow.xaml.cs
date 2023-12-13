@@ -13,6 +13,7 @@ namespace DeleteMetaFile
         public MainWindow()
         {
             InitializeComponent();
+            DeleteButton.IsEnabled = !string.IsNullOrEmpty(PathTextBox.Text);
         }
 
         private void OpenFolderButtonClick(object sender, RoutedEventArgs e)
@@ -77,6 +78,12 @@ namespace DeleteMetaFile
             cmd.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             cmd.StartInfo.Arguments = command;
             cmd.Start();
+            MessageBox.Show("実行完了");
+        }
+
+        private void PathTextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            DeleteButton.IsEnabled = !string.IsNullOrEmpty(PathTextBox.Text);
         }
     }
 }
